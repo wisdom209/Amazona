@@ -42,8 +42,10 @@ function App() {
                 .get("api/users/checkuser", { headers: { authorization: `Bearer ${isAuthenticated}` } })
                 .then((response) => response.data)
                 .catch((err) => Cookie.set("token", ""));
+
+                console.log(isAuthenticated)
         },
-        [ isAuthenticated ]
+        [  ]
     );
 
     return (
@@ -60,6 +62,7 @@ function App() {
                 <div className="appBody">
                     <Switch>
                         <Route path="/createaccount" component={CreateAccount} />
+                        <Route path="/shipping" component={ShippingScreen} />
                         <Route path="/signin" component={SignInScreen} />
                         <Route path="/cart/:id?" component={CartScreen} />
                         <Route path="/selectedProduct/:id?" component={SelectedProduct} />
@@ -69,7 +72,6 @@ function App() {
                         <div>
                             <Route path="/placeorder" component={PlaceOrderScreen} />
                             <Route path="/payment" component={PaymentScreen} />
-                            <Route path="/shipping" component={ShippingScreen} />
                             <Route path="/createproduct" component={CreateProduct} />
                         </div>
                     ) : (

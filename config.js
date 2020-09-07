@@ -1,4 +1,4 @@
-_7c5‍.x([["default",()=>_7c5‍.o]]);_7c5‍.d({
+export default {
     mongoDbUrl : process.env.mongoDbUrl || "mongodb://localhost/amaze",
     jwtSecret : process.env.jwtSecret || "somethingSecret"
-});
+}

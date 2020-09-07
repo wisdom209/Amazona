@@ -1,7 +1,7 @@
-let jwt,dotenv,config,response;_88a‍.x([["isAuth",()=>isAuth]]);_88a‍.w("jsonwebtoken",[["default",["jwt"],function(v){jwt=v}]]);_88a‍.w("dotenv",[["default",["dotenv"],function(v){dotenv=v}]]);_88a‍.w("./config",[["default",["config"],function(v){config=v}]]);_88a‍.w("express",[["response",["response"],function(v){response=v}]]);
-
-
-
+import jwt from "./node_modules/jsonwebtoken";
+import dotenv from "./node_modules/dotenv";
+import config from "./config";
+import { response } from "./node_modules/express";
 
 dotenv.config();
 const jwtSecret = config.jwtSecret;
@@ -19,7 +19,7 @@ const jwtSecret = config.jwtSecret;
 //     }
 //   }
 
-       const isAuth = (request, response, next)=>{
+export const isAuth = (request, response, next)=>{
     const token = request.headers.authorization
     if(!token){
         return response.send({msg : "auth error"})   
@@ -37,7 +37,7 @@ const jwtSecret = config.jwtSecret;
         }
 
     }catch(error){
-        _88a‍.g.console.log(error)
+        console.log(error)
     }
     
 }

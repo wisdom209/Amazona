@@ -1,10 +1,10 @@
-import express, { request, response } from "express";
+import express, { request, response } from "./node_modules/express";
 import User from "../models/userModel";
-import jwt from "jsonwebtoken";
-import { check, validationResult } from "express-validator";
+import jwt from "./node_modules/jsonwebtoken";
+import { check, validationResult } from "./node_modules/express-validator";
 import { isAuth } from "../utils";
 import jwtCheck from "../jwtCheck";
-
+import bcrypt from "./node_modules/bcryptjs";
 
 const userRouter = express.Router();
 
@@ -91,9 +91,5 @@ userRouter.get("/createadmin", (request, response) => {
         .then((data) => response.send("Admin " + data.name + " created"))
         .catch((err) => response.send({ msg: err }));
 });
-
-userRouter.get("/checkuser",jwtCheck, (request,response)=>{
-    response.send("login successful")
-})
 
 export default userRouter;
